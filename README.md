@@ -11,14 +11,15 @@ Este documento formaliza a arquitetura de microsserviços, o modelo de dados e o
 Para garantir escalabilidade, manutenibilidade e segurança, nossa solução separa o domínio transacional da inteligência artificial de processamento de imagem, evitando gargalos no monólito.
 
 
-
+```text
 [ Angular SPA ]
       │ (HTTP / Multipart)
       ▼
 [ Spring Boot (Gateway & Domínio) ] ──(REST / WebClient)──► [ FastAPI (Microsserviço de IA) ]
       │                                                                       │
       └──────────────────────────► [ PostgreSQL ] ◄───────────────────────────┘
-
+```
+      
 Frontend (Angular): Interface de usuário responsiva e acessível para o usuário final e telas de gestão.
 ‌
 
@@ -36,13 +37,15 @@ Persistência (PostgreSQL + Flyway): Banco de dados relacional com versionamento
 Nosso processo de desenvolvimento segue rigorosamente o modelo de fluxo contínuo demonstrado em engenharia de software, garantindo qualidade por meio de subcolunas de WIP (Work in Progress):
 
 
-
-┌─────────┐   ┌───────────────────────────┐   ┌─────────────────────────────┐   ┌────────────────────────────┐
-│Backlog │──►|    Especificação WIP    │──►│     Implementação WIP     │──►│   Revisão de Código WIP  │
-│        │   │(Em esp. │ Especificadas)│   │ (Em impl. │ Implementadas)│   │ (Em revisão │ Revisadas) │
-└─────────┘   └───────────────────────────┘   └─────────────────────────────┘   └────────────────────────────┘
-
-
+```text
+[ Angular SPA ]
+      │ (HTTP / Multipart)
+      ▼
+[ Spring Boot (Gateway & Domínio) ] ──(REST / WebClient)──► [ FastAPI (Microsserviço de IA) ]
+      │                                                                       │
+      └──────────────────────────► [ PostgreSQL ] ◄───────────────────────────┘
+```
+      
 Regras do Quadro:
 
 Sistema Pull: Os desenvolvedores puxam ativamente as tarefas do topo do backlog conforme liberam capacidade nas subcolunas.
