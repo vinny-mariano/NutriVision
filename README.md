@@ -11,7 +11,7 @@ Este documento formaliza a arquitetura de microsserviços, o modelo de dados e o
 Para garantir escalabilidade, manutenibilidade e segurança, nossa solução separa o domínio transacional da inteligência artificial de processamento de imagem, evitando gargalos no monólito.
 
 
-```text
+```markdown
 [ Angular SPA ]
       │ (HTTP / Multipart)
       ▼
@@ -37,13 +37,11 @@ Persistência (PostgreSQL + Flyway): Banco de dados relacional com versionamento
 Nosso processo de desenvolvimento segue rigorosamente o modelo de fluxo contínuo demonstrado em engenharia de software, garantindo qualidade por meio de subcolunas de WIP (Work in Progress):
 
 
-```text
-[ Angular SPA ]
-      │ (HTTP / Multipart)
-      ▼
-[ Spring Boot (Gateway & Domínio) ] ──(REST / WebClient)──► [ FastAPI (Microsserviço de IA) ]
-      │                                                                       │
-      └──────────────────────────► [ PostgreSQL ] ◄───────────────────────────┘
+```markdown
+┌─────────┐   ┌───────────────────────────┐   ┌─────────────────────────────┐   ┌────────────────────────────┐
+│ Backlog │──►│    Especificação WIP      │──►│     Implementação WIP       │──►│   Revisão de Código WIP    │
+│         │   │ (Em esp. │ Especificadas) │   │ (Em impl. │ Implementadas)  │   │ (Em revisão │ Revisadas)   │
+└─────────┘   └───────────────────────────┘   └─────────────────────────────┘   └────────────────────────────┘
 ```
       
 Regras do Quadro:
