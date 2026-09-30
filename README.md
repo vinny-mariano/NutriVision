@@ -51,12 +51,3 @@ Limitação de WIP: O trabalho em andamento é restrito para evitar gargalos de 
 
 Ciclo de Qualidade: Nenhuma tarefa passa para a coluna seguinte sem atender aos critérios de especificação formal, codificação limpa e revisão cruzada de código.
       
-Regras do Quadro:
-
-Sistema Pull: Os desenvolvedores puxam ativamente as tarefas do topo do backlog conforme liberam capacidade nas subcolunas.
-‌
-
-Limitação de WIP: O trabalho em andamento é restrito para evitar gargalos de contexto e garantir entregas incrementais testadas.
-‌
-
-Ciclo de Qualidade: Nenhuma tarefa passa para a coluna seguinte sem atender aos critérios de especificação formal, codificação limpa e revisão cruzada de código.
