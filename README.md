@@ -22,7 +22,7 @@ Para garantir escalabilidade, manutenibilidade e segurança, nossa solução sep
       
 Interface de Usuário (Cliente):
 
-MVP (Projeto Integrador I): Protótipo navegável interativo (Figma) / Interface Web responsiva (Angular) para validação dos fluxos de uso e regras de negócio.
+MVP (Projeto Integrador I): Protótipo navegável interativo (Figma) para validação dos fluxos de uso e regras de negócio.
 
 Evolução do Produto: Aplicativo nativo Android desenvolvido em Kotlin, otimizando o desempenho na captura de imagem via câmera e na comunicação com a API.
 
