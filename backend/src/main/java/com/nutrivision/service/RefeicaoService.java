@@ -1,36 +1,39 @@
 package com.nutrivision.service;
 
+import com.nutrivision.dto.RefeicaoRequestDTO;
+import com.nutrivision.dto.RefeicaoResponseDTO;
 import com.nutrivision.model.Refeicao;
 import com.nutrivision.repository.RefeicaoRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class RefeicaoService {
 
-    private final RefeicaoRepository refeicaoRepository;
+    private final RefeicaoRepository repository;
 
-    // Injeção de dependência via construtor (Padrão Sênior / Spring moderno)
-    public RefeicaoService(RefeicaoRepository refeicaoRepository) {
-        this.refeicaoRepository = refeicaoRepository;
+    public RefeicaoService(RefeicaoRepository repository) {
+        this.repository = repository;
     }
 
-    public List<Refeicao> listarTodas() {
-        return refeicaoRepository.findAll();
+    @Transactional
+    public RefeicaoResponseDTO criar(RefeicaoRequestDTO dto) {
+        Refeicao refeicao = new Refeicao();
+        refeicao.setDescricao(dto.descricao());
+        refeicao.setCalorias(dto.calorias());
+        refeicao.setDataHora(dto.dataHora());
+
+        Refeicao salva = repository.save(refeicao);
+        return new RefeicaoResponseDTO(salva);
     }
 
-    public Optional<Refeicao> buscarPorId(Long id) {
-        return refeicaoRepository.findById(id);
-    }
-
-    public Refeicao salvar(Refeicao refeicao) {
-        // Regras de negócio adicionais podem entrar aqui
-        return refeicaoRepository.save(refeicao);
-    }
-
-    public void deletar(Long id) {
-        refeicaoRepository.deleteById(id);
+    @Transactional(readOnly = true)
+    public List<RefeicaoResponseDTO> listarTodas() {
+        return repository.findAll().stream()
+                .map(RefeicaoResponseDTO::new)
+                .collect(Collectors.toList());
     }
 }
