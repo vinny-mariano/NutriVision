@@ -1,10 +1,18 @@
 package com.nutrivision.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "tb_refeicao")
+@Table(name = "tb_refeicoes")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Refeicao {
 
     @Id
@@ -12,31 +20,11 @@ public class Refeicao {
     private Long id;
 
     @Column(nullable = false)
-    private String nome;
+    private String descricao;
 
-    private LocalDateTime dataHora;
-
+    @Column(nullable = false)
     private Double calorias;
 
-    // Construtores
-    public Refeicao() {}
-
-    public Refeicao(String nome, LocalDateTime dataHora, Double calorias) {
-        this.nome = nome;
-        this.dataHora = dataHora;
-        this.calorias = calorias;
-    }
-
-    // Getters e Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
-    public String getNome() { return nome; }
-    public void setNome(String nome) { this.nome = nome; }
-
-    public LocalDateTime getDataHora() { return dataHora; }
-    public void setDataHora(LocalDateTime dataHora) { this.dataHora = dataHora; }
-
-    public Double getCalorias() { return calorias; }
-    public void setCalorias(Double calorias) { this.calorias = calorias; }
+    @Column(nullable = false)
+    private LocalDateTime dataHora;
 }
